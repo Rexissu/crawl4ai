@@ -58,11 +58,11 @@ Pull and run images directly from Docker Hub without building locally.
 
 #### 1. Pull the Image
 
-Our latest release candidate is `0.6.0rc1-r2`. Images are built with multi-arch manifests, so Docker automatically pulls the correct version for your system.
+Our latest release candidate is `0.6.0-r2`. Images are built with multi-arch manifests, so Docker automatically pulls the correct version for your system.
 
 ```bash
 # Pull the release candidate (recommended for latest features)
-docker pull unclecode/crawl4ai:0.6.0rc1-r2
+docker pull unclecode/crawl4ai:0.6.0-r1
 
 # Or pull the latest stable version
 docker pull unclecode/crawl4ai:latest
@@ -99,7 +99,7 @@ EOL
       -p 11235:11235 \
       --name crawl4ai \
       --shm-size=1g \
-      unclecode/crawl4ai:0.6.0rc1-r2
+      unclecode/crawl4ai:latest
     ```
 
 *   **With LLM support:**
@@ -110,7 +110,7 @@ EOL
       --name crawl4ai \
       --env-file .llm.env \
       --shm-size=1g \
-      unclecode/crawl4ai:0.6.0rc1-r2
+      unclecode/crawl4ai:latest
     ```
 
 > The server will be available at `http://localhost:11235`. Visit `/playground` to access the interactive testing interface.
@@ -124,9 +124,9 @@ docker stop crawl4ai && docker rm crawl4ai
 #### Docker Hub Versioning Explained
 
 *   **Image Name:** `unclecode/crawl4ai`
-*   **Tag Format:** `LIBRARY_VERSION[-SUFFIX]` (e.g., `0.6.0rc1-r2`)
+*   **Tag Format:** `LIBRARY_VERSION[-SUFFIX]` (e.g., `0.6.0-r2`)
     *   `LIBRARY_VERSION`: The semantic version of the core `crawl4ai` Python library
-    *   `SUFFIX`: Optional tag for release candidates (`rc1`) and revisions (`r1`)
+    *   `SUFFIX`: Optional tag for release candidates (``) and revisions (`r1`)
 *   **`latest` Tag:** Points to the most recent stable version
 *   **Multi-Architecture Support:** All images support both `linux/amd64` and `linux/arm64` architectures through a single tag
 
@@ -160,7 +160,7 @@ The `docker-compose.yml` file in the project root provides a simplified approach
     ```bash
     # Pulls and runs the release candidate from Docker Hub
     # Automatically selects the correct architecture
-    IMAGE=unclecode/crawl4ai:0.6.0rc1-r2 docker compose up -d
+    IMAGE=unclecode/crawl4ai:latest docker compose up -d
     ```
 
 *   **Build and Run Locally:**
